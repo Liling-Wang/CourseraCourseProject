@@ -13,41 +13,41 @@ var gulp = require('gulp'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
     ngannotate = require('gulp-ng-annotate')
-    del = require('del');
-gulp.task('jshint', function() {
+del = require('del');
+gulp.task('jshint', function () {
     return gulp.src('app/scripts/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter(stylish));
 });
 
 // Clean
-gulp.task('clean', function() {
+gulp.task('clean', function () {
     return del(['dist']);
 });
 
 // Default task
-gulp.task('default', ['clean'], function() {
-    gulp.start('usemin', 'imagemin','copyfonts');
+gulp.task('default', ['clean'], function () {
+    gulp.start('usemin', 'imagemin', 'copyfonts');
 });
 
-gulp.task('usemin',['jshint'], function () {
+gulp.task('usemin', ['jshint'], function () {
     return gulp.src('./app/**/*.html')
         .pipe(usemin({
-            css: [minifycss(),rev()],
-            js: [ngannotate(),uglify(),rev()]
+            css: [minifycss(), rev()],
+            js: [ngannotate(), uglify(), rev()]
         }))
         .pipe(gulp.dest('dist/'));
 });
 
 // Images
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
     return del(['dist/images']), gulp.src('app/images/**/*')
-        .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+        .pipe(cache(imagemin({optimizationLevel: 3, progressive: true, interlaced: true})))
         .pipe(gulp.dest('dist/images'))
-        .pipe(notify({ message: 'Images task complete' }));
+        .pipe(notify({message: 'Images task complete'}));
 });
 
-gulp.task('copyfonts', ['clean'], function() {
+gulp.task('copyfonts', ['clean'], function () {
     gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
         .pipe(gulp.dest('./dist/fonts'));
 
@@ -56,7 +56,7 @@ gulp.task('copyfonts', ['clean'], function() {
 });
 
 // Watch
-gulp.task('watch', ['browser-sync'], function() {
+gulp.task('watch', ['browser-sync'], function () {
     // Watch .js files
     gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['usemin']);
 
