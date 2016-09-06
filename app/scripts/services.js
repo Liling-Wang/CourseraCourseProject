@@ -6,7 +6,7 @@
 angular.module('confusionApp')
     .constant("baseURL", "http://localhost:3000/")
     //.factory('menuFactory', function(){
-    .service('menuFactory', ['$http', 'baseURL', function ($http, baseURL) {
+    .service('menuFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
         // var menufac ={};
 
         var promotions = [

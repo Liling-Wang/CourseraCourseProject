@@ -2,7 +2,7 @@
  * Created by liling on 8/31/16.
  */
 'use strict';
-angular.module('confusionApp', ['ui.router'])
+angular.module('confusionApp', ['ui.router','ngResource'])
     .config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
