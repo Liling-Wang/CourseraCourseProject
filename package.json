@@ -30,8 +30,11 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
+    "mongodb": "^2.2.9",
+    "mongoose": "^4.6.0",
     "morgan": "^1.7.0",
     "yargs": "^5.0.0"
   }
